@@ -1,0 +1,38 @@
+<html>
+    <head></head>
+    <body>
+        <form method = "POST">
+            {% csrf_token %}
+            Date: <input type="date" name="data_date">
+            <input type="submit" value="Get Data">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>MRP</th>
+                    <th>Selling Price</th>
+                    <th>Brand</th>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Model Name</th>
+                    <th>Date</th>
+                    <th>Product URL</th>
+                </tr>
+                
+                    {% for i in data1  %}
+                        <tr>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.mrp }}</td>
+                        <td>{{ i.selling_price }}</td>
+                        <td>{{ i.brand }}</td>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.type }}</td>
+                        <td>{{ i.model_name }}</td>
+                        <td>{{ i.date }}</td>
+                        <td>{{ i.product_url }}</td></tr>
+                    {% endfor %}
+            </table>
+            <a href = "{% url 'myblog/my_custom' %}">export to csv</a>
+            <button on-click="download()">Download CSV</button>
+        </form>
+    </body>
+</html>
